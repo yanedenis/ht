@@ -1,0 +1,48 @@
+{% extends '../base.html' %}
+
+{% block title %}All movies{% endblock %}
+
+{% block content %}
+    <div class="top-ten">
+        <div class="container">
+            <h2 class="mt-5 mb-5">All movies</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3>Search</h3>
+                            <form class="mb-4" action="{% url 'allMovies' %}">
+                                <div class="row">
+                                    <div class="col-9">
+                                        <input type="search" name="search" class="form-control" placeholder="Film name, description">
+                                    </div>
+                                    <div class="col-3">
+                                        <button type="submit" class="btn btn-primary m-1">Search</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <h3>Genre's</h3>
+                            <ul>
+                                <li><a href="{% url 'allMovies' %}" class="text-dark">All movies</a></li>
+                                {% for genre in genres %}
+                                <li><a href="{% url 'filterMovies' slug=genre.slug %}" class="text-dark">{{ genre.genreName }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    {% for movie in movies %}
+                    <div class="card mb-4">
+                        <div class="card-body" style="display: flex;justify-content:space-between;">
+                            <img src="{{ movie.poster }}" width="20%">
+                            <h2 style="right:15px;text-align:right;">{{ movie.movieName }}</h2>
+                            <a href="{% url 'movieDetail' pk=movie.pk %}" class="btn btn-primary" style="position:absolute;right:15px;bottom:15px;">Watch</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

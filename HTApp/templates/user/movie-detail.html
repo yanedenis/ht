@@ -1,0 +1,33 @@
+{% extends '../base.html' %}
+
+{% block title %}MovieName{% endblock %}
+
+{% block content %}
+    <div class="container mt-5 mb-5">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div style="width: 100%;">
+                            <img src="{{ movie.poster }}" width="100%">
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <h1>{{ movie.movieName }}</h1>
+                        <p><b>{{ movie.rating }}</b></p>
+                        <p>Year: <b>{{ movie.year }}</b> | Genre: <b>{{ movie.genre.genreName }}</b> | Produced by <b>{{ movie.producer }}</b></p>
+                        <p>Description: <i>{{ movie.description }}</i></p>
+                        <a href="#movie" class="btn btn-primary">Play</i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="movie" class="container mb-5">
+        <div class="card">
+            <div class="card-body">
+                <iframe width="100%" height="900" src="{{ movie.movieLink }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,40 @@
+::-webkit-scrollbar {
+    display: none;
+}
+#banner {
+    color: white;
+    background-color: #e0e9f4;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+#banner h1 {
+    font-size: 45px;
+    font-weight: 800;
+}
+#banner p {
+    width: 60%;
+    text-align: justify;
+}
+header {
+    background-color: #6a93ca;
+}
+#banner {
+    color: #3e4770;
+}
+@media screen and (max-width: 991px) {
+    #banner, #banner p {
+        text-align: center;
+    }
+    #banner p {
+        width: 100%;
+    }
+    #banner h1 {
+        font-size: 30px;
+        font-weight: 700;
+    }
+    .card-body
+}

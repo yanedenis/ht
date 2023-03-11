@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static './css/style.css' %}">
+    <link rel="stylesheet" href="{% static './css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static './css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static './css/owl.carousel.min.css' %}">
+    <link rel="icon" type="image/x-icon" href="/static/img/SiteIcon.png">
+</head>
+<style>
+label {
+display: block;
+font-size: 20px;
+margin-right: 10px;
+}
+input, textarea {
+width: 100%;
+margin: 5px 0;
+}
+select {
+margin: 5px 0;
+}
+#id_year, #id_producer, #id_rating {
+width: fit-content;
+}
+.btn {
+margin-top: 10px;
+}
+</style>
+<body>
+<header class="navbar navbar-expand-lg navbar-dark">
+    <div class="container mt-2 mb-3">
+        <img src="/static/img/logo.png" width="40px" style="margin-right: 10px;">
+        <a class="navbar-brand" href="{% url 'homePage' %}">HT</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'homePage' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'topMovies' %}">Movies</a>
+                </li>
+                {% if user.is_authenticated %}
+                {% if user.is_superuser %}
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'addMovie' %}">Add Movie</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'addGenre' %}">Add Genre</a>
+                </li>
+                {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'logoutUser' %}">{{ user.username }}: Log Out</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'signUpPage' %}">Sign Up</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'loginPage' %}">Log In</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</header>
+
+{% block content %}
+{% endblock %}
+
+<script src="{% static './js/jquery.min.js' %}"></script>
+<script src="{% static './js/owl.carousel.min.js' %}"></script>
+<script src="{% static './js/carousel.js' %}"></script>
+<script src="{% static './js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static './js/script.js' %}"></script>
+</body>
+</html>
