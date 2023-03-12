@@ -3,6 +3,11 @@
 {% block title %}Top movies{% endblock %}
 
 {% block content %}
+<style>
+    .owl-nav {
+    display:none;
+    }
+</style>
     <div class="recommended mt-5 mb-5">
         <div class="container">
             {% for m in movie %}
